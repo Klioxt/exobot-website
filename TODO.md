@@ -13,4 +13,4 @@
 - [x] Pousser le code vers GitHub
 - [x] Renommer la branche en 'main'
 - [x] Activer GitHub Pages pour l'hébergement gratuit avec HTTPS
-- [x] Ajustements finaux basés sur les retours
+- [ ] Ajustements finaux basés sur les retours

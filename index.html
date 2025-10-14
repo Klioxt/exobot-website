@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExoBot Discord - Le meilleur bot pour votre serveur</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#features">Fonctionnalités</a></li>
+                    <li><a href="#docs">Documentation</a></li>
+                    <li><a href="#help">Aide</a></li>
+                </ul>
+                <a href="https://discord.com/oauth2/authorize?client_id=1423667743793746113&permissions=8&integration_type=0&scope=bot" class="invite-btn">Inviter le Bot</a>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Rencontrez ExoBot</h1>
+            <p>Le bot Discord ultime pour améliorer votre expérience serveur avec des fonctionnalités avancées et une interface intuitive.</p>
+            <div class="hero-buttons">
+                <a href="https://discord.com/oauth2/authorize?client_id=1423667743793746113&permissions=8&integration_type=0&scope=bot" class="invite-btn large">Inviter ExoBot</a>
+                <a href="#features" class="learn-more-btn">En savoir plus</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="floating-elements">
+                <div class="element element-1"><i class="fas fa-music"></i></div>
+                <div class="element element-2"><i class="fas fa-shield-alt"></i></div>
+                <div class="element element-3"><i class="fas fa-cogs"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Fonctionnalités Puissantes</h2>
+            <div class="tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="moderation">Modération</button>
+                    <button class="tab-btn" data-tab="support">Support</button>
+                    <button class="tab-btn" data-tab="fun">Fun</button>
+                    <button class="tab-btn" data-tab="utilities">Utilitaires</button>
+                </div>
+                <div class="tab-content">
+                    <div id="moderation" class="tab-pane active">
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-ban"></i>
+                                <h3>Anti-Spam</h3>
+                                <p>Protège votre serveur contre les messages indésirables et les raids.</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-gavel"></i>
+                                <h3>Modération Automatique</h3>
+                                <p>Gère les sanctions et les avertissements automatiquement.</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-eye"></i>
+                                <h3>Surveillance</h3>
+                                <p>Surveille les activités suspectes en temps réel.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="support" class="tab-pane">
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-ticket-alt"></i>
+                                <h3>Commandes de Ticket</h3>
+                                <p>Créez et gérez des tickets de support facilement.</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-file-alt"></i>
+                                <h3>Système de Logs</h3>
+                                <p>Enregistrez toutes les actions importantes sur votre serveur.</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <h3>Protection Avancée</h3>
+                                <p>Protégez votre serveur contre les menaces externes.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="fun" class="tab-pane">
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-dice"></i>
+                                <h3>Jeux</h3>
+                                <p>Divers jeux interactifs pour divertir votre communauté.</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-magic"></i>
+                                <h3>Commandes Fun</h3>
+                                <p>Commandes amusantes pour égayer vos conversations.</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-trophy"></i>
+                                <h3>Classements</h3>
+                                <p>Système de points et de classements pour vos membres.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="utilities" class="tab-pane">
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <i class="fas fa-calendar"></i>
+                                <h3>Rappels</h3>
+                                <p>Programmez des rappels pour vos événements importants.</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-poll"></i>
+                                <h3>Sondages</h3>
+                                <p>Créez des sondages interactifs pour votre communauté.</p>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-search"></i>
+                                <h3>Recherche</h3>
+                                <p>Recherchez des informations directement depuis Discord.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="docs" class="docs">
+        <div class="container">
+            <h2>Documentation ExoBot</h2>
+            <div class="docs-content">
+                <div class="docs-info">
+                    <h3>À propos d'ExoBot</h3>
+                    <p>ExoBot est un bot Discord avancé conçu pour améliorer l'expérience de votre serveur avec des fonctionnalités de modération, de support et de divertissement.</p>
+                    <div class="bot-details">
+                        <p><strong>Préfixe :</strong> /</p>
+                        <p><strong>Fondateur :</strong> 0zsw</p>
+                    </div>
+                </div>
+                <div class="docs-buttons">
+                    <a href="https://discord.com/oauth2/authorize?client_id=1423667743793746113&permissions=8&integration_type=0&scope=bot" class="invite-btn">Inviter le Bot</a>
+                    <a href="https://discord.gg/kmguvp4knA" class="support-link">Rejoindre le Support</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="help" class="help">
+        <div class="container">
+            <h2>Besoin d'Aide ?</h2>
+            <div class="help-content">
+                <div class="help-item">
+                    <i class="fas fa-comments"></i>
+                    <h3>Discord Support</h3>
+                    <p>Rejoignez notre serveur Discord pour obtenir de l'aide en temps réel.</p>
+                    <a href="https://discord.gg/kmguvp4knA" class="support-link">Rejoindre</a>
+                </div>
+                <div class="help-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Contact</h3>
+                    <p>Contactez-nous directement pour des demandes spéciales.</p>
+                    <a href="#" class="support-link">Contacter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Politique de Confidentialité</a>
+                    <a href="#">Conditions d'Utilisation</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ExoBot. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

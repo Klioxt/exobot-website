@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modération Automatique - ExoBot Documentation</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="../index.html#features">Fonctionnalités</a></li>
+                    <li><a href="../index.html#docs">Documentation</a></li>
+                    <li><a href="../index.html#help">Aide</a></li>
+                </ul>
+                <a href="https://discord.com/oauth2/authorize?client_id=1423667743793746113&permissions=8&integration_type=0&scope=bot" class="invite-btn">Inviter le Bot</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="feature-detail">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Accueil</a> > <a href="../index.html#features">Fonctionnalités</a> > <span>Modération Automatique</span>
+            </div>
+
+            <div class="feature-header">
+                <div class="feature-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <div class="feature-info">
+                    <h1>Modération Automatique</h1>
+                    <p>Gérez automatiquement les sanctions, avertissements et actions disciplinaires sur votre serveur Discord avec un système intelligent de modération.</p>
+                </div>
+            </div>
+
+            <div class="feature-content">
+                <div class="feature-description">
+                    <h2>Comment ça marche ?</h2>
+                    <p>La modération automatique d'ExoBot surveille les comportements des membres et applique des sanctions appropriées selon des règles prédéfinies. Le système apprend des patterns et s'adapte à l'activité de votre serveur pour maintenir un environnement sain.</p>
+
+                    <div class="feature-illustration">
+                        <div class="discord-mockup">
+                            <div class="mockup-header">
+                                <span># modération</span>
+                            </div>
+                            <div class="mockup-messages">
+                                <div class="message user">
+                                    <div class="avatar">M</div>
+                                    <div class="content">
+                                        <div class="username">Modérateur</div>
+                                        <div class="text">Configuration de la modération automatique activée</div>
+                                    </div>
+                                </div>
+                                <div class="message system">
+                                    <div class="avatar">🤖</div>
+                                    <div class="content">
+                                        <div class="username">ExoBot</div>
+                                        <div class="text">🚨 Utilisateur <strong>@Troll123</strong> a reçu un avertissement automatique pour langage inapproprié</div>
+                                    </div>
+                                </div>
+                                <div class="message system">
+                                    <div class="avatar">🤖</div>
+                                    <div class="content">
+                                        <div class="username">ExoBot</div>
+                                        <div class="text">⏰ <strong>@SpamBot</strong> a été muté 10 minutes pour flood de messages</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="commands-section">
+                    <h2>Commandes de Modération Automatique</h2>
+
+                    <div class="command-group">
+                        <h3>Configuration générale</h3>
+                        <div class="command-item">
+                            <div class="command-code">/automod enable</div>
+                            <div class="command-desc">Active la modération automatique sur le serveur</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod disable</div>
+                            <div class="command-desc">Désactive la modération automatique</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod status</div>
+                            <div class="command-desc">Affiche l'état actuel de la modération automatique</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod logs</div>
+                            <div class="command-desc">Affiche les logs des actions automatiques récentes</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Règles de contenu</h3>
+                        <div class="command-item">
+                            <div class="command-code">/automod badwords enable</div>
+                            <div class="command-desc">Active la détection des mots inappropriés</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod badwords add <mot></div>
+                            <div class="command-desc">Ajoute un mot à la liste des mots interdits</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod badwords remove <mot></div>
+                            <div class="command-desc">Retire un mot de la liste des mots interdits</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod links block</div>
+                            <div class="command-desc">Bloque automatiquement les liens suspects</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Système d'avertissements</h3>
+                        <div class="command-item">
+                            <div class="command-code">/automod warn setup <seuil></div>
+                            <div class="command-desc">Configure le nombre d'avertissements avant sanction (défaut: 3)</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod warn action <sanction></div>
+                            <div class="command-desc">Définit l'action après seuil atteint (mute/kick/ban)</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod warn reset <utilisateur></div>
+                            <div class="command-desc">Remet à zéro les avertissements d'un utilisateur</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod warn list <utilisateur></div>
+                            <div class="command-desc">Affiche l'historique des avertissements d'un utilisateur</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Actions automatiques</h3>
+                        <div class="command-item">
+                            <div class="command-code">/automod action timeout <durée></div>
+                            <div class="command-desc">Configure la durée du timeout automatique (défaut: 10min)</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod action mute <durée></div>
+                            <div class="command-desc">Configure la durée du mute automatique (défaut: 1h)</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod action kick</div>
+                            <div class="command-desc">Active l'expulsion automatique après avertissements</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod action ban</div>
+                            <div class="command-desc">Active le bannissement automatique pour les récidivistes</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Exceptions et whitelist</h3>
+                        <div class="command-item">
+                            <div class="command-code">/automod exempt add <rôle></div>
+                            <div class="command-desc">Exempte un rôle de la modération automatique</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod exempt remove <rôle></div>
+                            <div class="command-desc">Retire l'exemption d'un rôle</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod exempt list</div>
+                            <div class="command-desc">Affiche la liste des rôles exemptés</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/automod channel ignore <salon></div>
+                            <div class="command-desc">Ignore un salon dans la modération automatique</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips-section">
+                    <h2>Conseils d'utilisation</h2>
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <i class="fas fa-balance-scale"></i>
+                            <h4>Équilibre des sanctions</h4>
+                            <p>Commencez avec des sanctions légères (warn/timeout) et augmentez progressivement selon les besoins de votre communauté.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-users-cog"></i>
+                            <h4>Rôles exemptés</h4>
+                            <p>N'oubliez pas d'exempter vos modérateurs et administrateurs pour éviter les conflits avec le système automatique.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-eye"></i>
+                            <h4>Surveillance active</h4>
+                            <p>Vérifiez régulièrement les logs pour ajuster les règles selon l'évolution de votre communauté.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-gavel"></i>
+                            <h4>Communication</h4>
+                            <p>Informez vos membres des règles automatiques pour éviter les surprises et maintenir la confiance.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Politique de Confidentialité</a>
+                    <a href="#">Conditions d'Utilisation</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ExoBot. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

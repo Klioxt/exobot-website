@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surveillance - ExoBot Documentation</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="../index.html#features">Fonctionnalités</a></li>
+                    <li><a href="../index.html#docs">Documentation</a></li>
+                    <li><a href="../index.html#help">Aide</a></li>
+                </ul>
+                <a href="https://discord.com/oauth2/authorize?client_id=1423667743793746113&permissions=8&integration_type=0&scope=bot" class="invite-btn">Inviter le Bot</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="feature-detail">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Accueil</a> > <a href="../index.html#features">Fonctionnalités</a> > <span>Surveillance</span>
+            </div>
+
+            <div class="feature-header">
+                <div class="feature-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <div class="feature-info">
+                    <h1>Surveillance Avancée</h1>
+                    <p>Surveillez en temps réel les activités suspectes, les comportements à risque et les menaces potentielles sur votre serveur Discord.</p>
+                </div>
+            </div>
+
+            <div class="feature-content">
+                <div class="feature-description">
+                    <h2>Comment ça marche ?</h2>
+                    <p>Le système de surveillance d'ExoBot analyse constamment l'activité de votre serveur pour détecter les comportements suspects, les tentatives de raid, les comptes suspects et les activités potentiellement dangereuses. Recevez des alertes en temps réel et des rapports détaillés.</p>
+
+                    <div class="feature-illustration">
+                        <div class="discord-mockup">
+                            <div class="mockup-header">
+                                <span># surveillance</span>
+                            </div>
+                            <div class="mockup-messages">
+                                <div class="message system alert">
+                                    <div class="avatar">🚨</div>
+                                    <div class="content">
+                                        <div class="username">ExoBot - Alerte Sécurité</div>
+                                        <div class="text">🔴 <strong>Activité suspecte détectée :</strong> Tentative de raid depuis 3 comptes similaires</div>
+                                    </div>
+                                </div>
+                                <div class="message system">
+                                    <div class="avatar">📊</div>
+                                    <div class="content">
+                                        <div class="username">ExoBot - Rapport</div>
+                                        <div class="text">📈 <strong>@NewUser123</strong> - Compte créé il y a 2 minutes, rejoint 5 serveurs en 1h</div>
+                                    </div>
+                                </div>
+                                <div class="message user">
+                                    <div class="avatar">M</div>
+                                    <div class="content">
+                                        <div class="username">Modérateur</div>
+                                        <div class="text">Merci pour l'alerte ! Je vais vérifier ça.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="commands-section">
+                    <h2>Commandes de Surveillance</h2>
+
+                    <div class="command-group">
+                        <h3>Configuration de surveillance</h3>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance enable</div>
+                            <div class="command-desc">Active le système de surveillance avancée</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance disable</div>
+                            <div class="command-desc">Désactive la surveillance avancée</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance status</div>
+                            <div class="command-desc">Affiche l'état actuel de la surveillance</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance alerts <salon></div>
+                            <div class="command-desc">Définit le salon pour recevoir les alertes de sécurité</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Détection de raids</h3>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance raid enable</div>
+                            <div class="command-desc">Active la détection automatique de raids</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance raid threshold <nombre></div>
+                            <div class="command-desc">Définit le seuil de nouveaux membres pour déclencher l'alerte (défaut: 5)</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance raid action <mode></div>
+                            <div class="command-desc">Définit l'action automatique (lock/verify/manual)</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance raid lockdown</div>
+                            <div class="command-desc">Active immédiatement le mode lockdown du serveur</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Analyse des comptes</h3>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance user check <utilisateur></div>
+                            <div class="command-desc">Analyse un utilisateur spécifique pour détecter les risques</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance user history <utilisateur></div>
+                            <div class="command-desc">Affiche l'historique détaillé d'un utilisateur</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance suspicious list</div>
+                            <div class="command-desc">Liste tous les utilisateurs marqués comme suspects</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance ban_check <utilisateur></div>
+                            <div class="command-desc">Vérifie si un utilisateur est banni d'autres serveurs</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Rapports et logs</h3>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance report daily</div>
+                            <div class="command-desc">Génère un rapport quotidien des activités suspectes</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance report weekly</div>
+                            <div class="command-desc">Génère un rapport hebdomadaire détaillé</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance logs <filtre></div>
+                            <div class="command-desc">Affiche les logs filtrés (raid/user/alerts)</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance stats</div>
+                            <div class="command-desc">Affiche les statistiques de surveillance du serveur</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Paramètres avancés</h3>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance sensitivity <niveau></div>
+                            <div class="command-desc">Ajuste la sensibilité de détection (1-10, défaut: 5)</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance whitelist add <utilisateur></div>
+                            <div class="command-desc">Ajoute un utilisateur à la whitelist de surveillance</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance ignore_channel <salon></div>
+                            <div class="command-desc">Ignore un salon dans la surveillance</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/surveillance auto_action enable</div>
+                            <div class="command-desc">Active les actions automatiques sur détection</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips-section">
+                    <h2>Conseils d'utilisation</h2>
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Salon dédié</h4>
+                            <p>Créez un salon privé pour les modérateurs où seront envoyées les alertes de sécurité importantes.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-clock"></i>
+                            <h4>Rapports réguliers</h4>
+                            <p>Configurez des rapports quotidiens pour rester informé de l'activité générale sans être submergé.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-balance-scale"></i>
+                            <h4>Sensibilité équilibrée</h4>
+                            <p>Ajustez la sensibilité selon la taille de votre serveur : plus il est grand, plus la sensibilité peut être basse.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-users"></i>
+                            <h4>Formation des modérateurs</h4>
+                            <p>Formez vos modérateurs à interpréter les alertes et à agir rapidement sur les vraies menaces.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Politique de Confidentialité</a>
+                    <a href="#">Conditions d'Utilisation</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ExoBot. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

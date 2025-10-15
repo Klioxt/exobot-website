@@ -533,8 +533,8 @@ header {
 
 /* Dashboard Styles */
 .dashboard-hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: var(--darker-bg);
+    color: var(--text-light);
     padding: 6rem 0 4rem;
     text-align: center;
 }

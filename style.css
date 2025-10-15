@@ -531,6 +531,139 @@ header {
     color: var(--accent);
 }
 
+/* Dashboard Styles */
+.dashboard-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6rem 0 4rem;
+    text-align: center;
+}
+
+.dashboard-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.dashboard-hero p {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+    opacity: 0.9;
+}
+
+.auth-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.auth-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem;
+    max-width: 500px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.auth-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: #5865f2;
+}
+
+.auth-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.auth-card p {
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.discord-login-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #5865f2;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.discord-login-btn:hover {
+    background: #4752c4;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(88, 101, 242, 0.3);
+}
+
+.auth-note {
+    margin-top: 1.5rem;
+    opacity: 0.7;
+}
+
+.dashboard-features {
+    padding: 6rem 0;
+    background: #f8f9fa;
+}
+
+.dashboard-features h2 {
+    text-align: center;
+    margin-bottom: 4rem;
+    color: #2d3748;
+    font-size: 2.5rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.feature-card .feature-icon {
+    font-size: 3rem;
+    color: #667eea;
+    margin-bottom: 1.5rem;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #2d3748;
+}
+
+.feature-card p {
+    color: #718096;
+    line-height: 1.6;
+}
+
 /* Footer */
 footer {
     background: var(--darker-bg);

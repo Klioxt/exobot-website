@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - ExoBot</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="index.html" style="color: inherit; text-decoration: none; display: flex; align-items: center;">
+                        <i class="fas fa-robot"></i>
+                        <span>ExoBot</span>
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="index.html#features">Commandes</a></li>
+                    <li><a href="index.html#docs">Documentation</a></li>
+                    <li><a href="index.html#help">Aide</a></li>
+                </ul>
+                <a href="https://discord.com/oauth2/authorize?client_id=1423667743793746113&permissions=8&integration_type=0&scope=bot" class="invite-btn">Inviter le Bot</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="dashboard-hero">
+        <div class="container">
+            <div class="dashboard-content">
+                <h1><i class="fas fa-tachometer-alt"></i> Dashboard ExoBot</h1>
+                <p>Contrôlez votre bot Discord directement depuis votre navigateur</p>
+
+                <div class="auth-section">
+                    <div class="auth-card">
+                        <div class="auth-icon">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <h3>Connexion Requise</h3>
+                        <p>Connectez-vous avec votre compte Discord pour accéder au panneau de contrôle</p>
+                        <a href="https://discord.com/api/oauth2/authorize?client_id=1423667743793746113&redirect_uri=https%3A%2F%2Fklioxt.github.io%2Fexobot-website%2Fdashboard.html&response_type=code&scope=identify%20guilds" class="discord-login-btn">
+                            <i class="fab fa-discord"></i>
+                            Se connecter avec Discord
+                        </a>
+                        <p class="auth-note">
+                            <small>Nous utilisons uniquement vos informations de base (nom, avatar) et la liste des serveurs où vous êtes présent avec ExoBot.</small>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dashboard-features">
+        <div class="container">
+            <h2>Fonctionnalités du Dashboard</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Gestion des Serveurs</h3>
+                    <p>Configurez ExoBot pour chacun de vos serveurs Discord</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Paramètres Globaux</h3>
+                    <p>Modifiez les paramètres généraux du bot</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Statistiques</h3>
+                    <p>Consultez les statistiques d'utilisation du bot</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Modération</h3>
+                    <p>Gérez la modération sur tous vos serveurs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Politique de Confidentialité</a>
+                    <a href="#">Conditions d'Utilisation</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ExoBot. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

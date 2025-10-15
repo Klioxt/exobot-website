@@ -561,6 +561,8 @@ window.addEventListener('resize', function() {
 });
 
 // Dashboard authentication system
+const API_BASE = 'https://exobot-dashboard-api.herokuapp.com'; // Replace with your backend URL
+
 function handleDashboardAuth() {
     console.log('handleDashboardAuth called');
     const urlParams = new URLSearchParams(window.location.search);
@@ -569,85 +571,74 @@ function handleDashboardAuth() {
 
     if (code) {
         console.log('Processing OAuth code...');
-        // Exchange code for access token
+        // Exchange code for access token via backend
         exchangeCodeForToken(code);
     } else {
         console.log('No OAuth code, checking existing session...');
-        // Check if already logged in
-        const token = localStorage.getItem('discord_token');
-        const user = JSON.parse(localStorage.getItem('discord_user') || 'null');
+        // Check if already logged in via backend
+        checkExistingSession();
+    }
+}
 
-        if (token && user) {
+async function checkExistingSession() {
+    try {
+        const response = await fetch(`${API_BASE}/api/user`, {
+            credentials: 'include'
+        });
+
+        if (response.ok) {
+            const userData = await response.json();
             console.log('Existing session found, showing dashboard');
-            showDashboard(user);
+            showDashboard(userData);
         } else {
             console.log('No session found, showing login form');
             showLoginForm();
         }
+    } catch (error) {
+        console.error('Error checking session:', error);
+        showLoginForm();
     }
 }
 
 async function exchangeCodeForToken(code) {
     try {
-        // In production, this should be done server-side to avoid exposing client secret
-        // For demo purposes, we'll simulate the token exchange
-        console.log('Exchanging code for token...');
+        console.log('Exchanging code for token via backend...');
 
-        // Simulate API call delay
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        const response = await fetch(`${API_BASE}/auth/callback`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify({ code })
+        });
 
-        // Simulate successful token exchange
-        const tokenData = {
-            access_token: 'simulated_access_token_' + Date.now(),
-            token_type: 'Bearer',
-            expires_in: 604800,
-            refresh_token: 'simulated_refresh_token_' + Date.now(),
-            scope: 'identify guilds'
-        };
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
-        localStorage.setItem('discord_token', tokenData.access_token);
-        localStorage.setItem('discord_refresh_token', tokenData.refresh_token);
+        const data = await response.json();
 
-        // Fetch user data
-        await fetchDiscordUser(tokenData.access_token);
+        if (data.success) {
+            // Clean URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+            showDashboard(data.user);
+            showNotification('Connexion Discord réussie !', 'success');
+        } else {
+            throw new Error(data.error || 'Authentication failed');
+        }
 
     } catch (error) {
         console.error('Error exchanging code for token:', error);
-        showNotification('Erreur lors de la connexion Discord', 'error');
+        showNotification('Erreur lors de la connexion Discord: ' + error.message, 'error');
         showLoginForm();
     }
 }
 
-async function fetchDiscordUser(token) {
-    try {
-        // Simulate API call to Discord
-        console.log('Fetching user data from Discord...');
-
-        // Simulate API delay
-        await new Promise(resolve => setTimeout(resolve, 500));
-
-        // Simulate real Discord user data
-        const userData = {
-            id: '987654321098765432',
-            username: 'RealUser',
-            avatar: 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6',
-            discriminator: '1337',
-            global_name: 'Real User'
-        };
-
-        localStorage.setItem('discord_user', JSON.stringify(userData));
-
-        // Clean URL
-        window.history.replaceState({}, document.title, window.location.pathname);
-        showDashboard(userData);
-
-        showNotification('Connexion Discord réussie !', 'success');
-
-    } catch (error) {
-        console.error('Error fetching Discord user:', error);
-        showNotification('Erreur lors de la récupération des données utilisateur', 'error');
-        showLoginForm();
-    }
+async function fetchDiscordUser() {
+    // This function is now handled by the backend
+    // Keeping for compatibility but it should not be called directly
+    console.warn('fetchDiscordUser should not be called directly, use backend API instead');
 }
 
 function showLoginForm() {
@@ -692,9 +683,30 @@ function showDashboard(user) {
     }
 }
 
-function logout() {
+async function logout() {
+    try {
+        await fetch(`${API_BASE}/auth/logout`, {
+            method: 'POST',
+            credentials: 'include'
+        });
+    } catch (error) {
+        console.error('Logout error:', error);
+    }
+
+    // Clear local storage and reload
     localStorage.removeItem('discord_token');
     localStorage.removeItem('discord_refresh_token');
     localStorage.removeItem('discord_user');
     location.reload();
+}
+
+async function initiateDiscordLogin() {
+    try {
+        const response = await fetch(`${API_BASE}/auth/discord`);
+        const data = await response.json();
+        window.location.href = data.authUrl;
+    } catch (error) {
+        console.error('Error initiating Discord login:', error);
+        showNotification('Erreur lors de l\'initialisation de la connexion Discord', 'error');
+    }
 }

@@ -1,17 +1,41 @@
-# Tâches pour créer le site web du bot Discord
+# TODO: Implémenter la connexion réelle du dashboard au bot Discord
 
-- [x] Créer la structure de base du dossier (index.html, style.css, script.js, assets/)
-- [x] Développer index.html avec sections : en-tête, héros, fonctionnalités avec onglets, docs, aide, pied de page
-- [x] Créer style.css pour un design moderne, propre, avec thème violet-bleu foncé, animations
-- [x] Ajouter script.js pour les animations et la fonctionnalité des onglets
-- [x] Remplacer la section support par sections docs et aide avec styles et animations appropriés
-- [x] Tester le site en ouvrant index.html dans le navigateur
-- [x] Initialiser un dépôt Git local
-- [x] Configurer Git avec les informations utilisateur
-- [x] Créer un commit initial
-- [x] Ajouter le remote GitHub
-- [x] Pousser le code vers GitHub
-- [x] Renommer la branche en 'main'
-- [x] Activer GitHub Pages pour l'hébergement gratuit avec HTTPS
-- [x] Créer des pages détaillées pour chaque fonctionnalité avec commandes et illustrations
-- [ ] Ajustements finaux basés sur les retours
+## Étape 1: Créer le serveur backend
+- [ ] Créer package.json avec les dépendances (express, discord.js, axios, cors, dotenv)
+- [ ] Créer server.js avec les endpoints OAuth2 et API Discord
+- [ ] Configurer les variables d'environnement (.env)
+
+## Étape 2: Implémenter l'OAuth2 sécurisé
+- [ ] Endpoint /auth/discord pour initier l'OAuth
+- [ ] Endpoint /auth/callback pour échanger le code contre un token
+- [ ] Stocker les tokens de manière sécurisée
+
+## Étape 3: API Discord intégration
+- [ ] Endpoint /api/user pour récupérer les données utilisateur
+- [ ] Endpoint /api/guilds pour récupérer les serveurs
+- [ ] Endpoint /api/guild/:id pour les détails d'un serveur
+
+## Étape 4: Persistance des paramètres
+- [ ] Système de stockage des paramètres (JSON file ou base de données)
+- [ ] Endpoints pour sauvegarder/charger les paramètres
+
+## Étape 5: Modifier le frontend
+- [ ] Modifier script.js pour appeler les vrais endpoints API
+- [ ] Supprimer les fonctions simulées
+- [ ] Ajouter gestion d'erreurs côté frontend
+
+## Étape 6: Sécurité et CORS
+- [ ] Configurer CORS pour permettre les requêtes du frontend
+- [ ] Ajouter validation des tokens
+- [ ] Gestion des erreurs et sécurité
+
+## Étape 7: Test et déploiement
+- [ ] Tester le flux OAuth complet
+- [ ] Tester la récupération des données
+- [ ] Déployer sur GitHub Pages (frontend) et serveur (si nécessaire)
+- [ ] Mettre à jour les URLs dans le code si besoin
+
+## Notes importantes
+- Client ID Discord: 1423667743793746113
+- Nécessite un client secret Discord (à configurer dans .env)
+- Le backend devra tourner sur un serveur séparé du frontend statique

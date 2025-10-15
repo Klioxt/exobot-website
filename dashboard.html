@@ -42,7 +42,7 @@
                         </div>
                         <h3>Connexion Requise</h3>
                         <p>Connectez-vous avec votre compte Discord pour accéder au panneau de contrôle</p>
-                        <a href="https://discord.com/api/oauth2/authorize?client_id=1423667743793746113&redirect_uri=https%3A%2F%2Fklioxt.github.io%2Fexobot-website%2Fdashboard.html&response_type=code&scope=identify%20guilds" class="discord-login-btn">
+                <a href="#" onclick="initiateDiscordLogin()" class="discord-login-btn">
                             <i class="fab fa-discord"></i>
                             Se connecter avec Discord
                         </a>
@@ -337,11 +337,6 @@
                             <div class="control-section">
                                 <h3>Paramètres Généraux</h3>
                                 <div class="settings-grid">
-                                    <div class="setting-item">
-                                        <label for="bot-prefix">Préfixe du bot:</label>
-                                        <input type="text" id="bot-prefix" value="!" maxlength="5">
-                                    </div>
-
                                     <div class="setting-item">
                                         <label for="bot-language">Langue:</label>
                                         <select id="bot-language">

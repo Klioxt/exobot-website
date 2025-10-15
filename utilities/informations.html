@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commandes Informations - ExoBot Documentation</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="../index.html#features">Fonctionnalités</a></li>
+                    <li><a href="../index.html#docs">Documentation</a></li>
+                    <li><a href="../index.html#help">Aide</a></li>
+                </ul>
+                <a href="https://discord.com/oauth2/authorize?client_id=1423667743793746113&permissions=8&integration_type=0&scope=bot" class="invite-btn">Inviter le Bot</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="feature-detail">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Accueil</a> > <a href="../index.html#features">Fonctionnalités</a> > <span>Commandes Informations</span>
+            </div>
+
+            <div class="feature-header">
+                <div class="feature-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="feature-info">
+                    <h1>Commandes Informations</h1>
+                    <p>Obtenez des informations détaillées sur votre serveur Discord et ses membres avec des commandes intuitives.</p>
+                </div>
+            </div>
+
+            <div class="feature-content">
+                <div class="feature-description">
+                    <h2>Comment ça marche ?</h2>
+                    <p>Les commandes d'informations d'ExoBot vous permettent d'accéder rapidement à des données importantes sur votre serveur et ses membres. Que ce soit pour connaître les statistiques du serveur ou les détails d'un utilisateur spécifique, ces commandes fournissent des informations claires et organisées.</p>
+
+                    <div class="feature-illustration">
+                        <div class="discord-mockup">
+                            <div class="mockup-header">
+                                <span># informations</span>
+                            </div>
+                            <div class="mockup-messages">
+                                <div class="message user">
+                                    <div class="avatar">U</div>
+                                    <div class="content">
+                                        <div class="username">Membre</div>
+                                        <div class="text">/serverinfo</div>
+                                    </div>
+                                </div>
+                                <div class="message system embed">
+                                    <div class="avatar">📊</div>
+                                    <div class="content">
+                                        <div class="username">ExoBot</div>
+                                        <div class="embed-content">
+                                            <div class="embed-title">Informations du Serveur</div>
+                                            <div class="embed-field">👑 Propriétaire: @Owner</div>
+                                            <div class="embed-field">👥 Membres: 1,234</div>
+                                            <div class="embed-field">📅 Créé le: 15/03/2020</div>
+                                            <div class="embed-field">🌍 Région: Europe</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="commands-section">
+                    <h2>Commandes Informations</h2>
+
+                    <div class="command-group">
+                        <h3>Informations Serveur</h3>
+                        <div class="command-item">
+                            <div class="command-code">/serverinfo</div>
+                            <div class="command-desc">Affiche des infos sur le serveur</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Informations Utilisateur</h3>
+                        <div class="command-item">
+                            <div class="command-code">/userinfo [@utilisateur]</div>
+                            <div class="command-desc">Infos sur un membre</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips-section">
+                    <h2>Conseils d'utilisation</h2>
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <i class="fas fa-server"></i>
+                            <h4>Vue d'ensemble</h4>
+                            <p>/serverinfo donne un aperçu complet du serveur, utile pour les nouveaux membres ou les administrateurs.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-user"></i>
+                            <h4>Profil Détaillé</h4>
+                            <p>/userinfo fournit des informations détaillées sur n'importe quel membre, y compris la date d'arrivée.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Vérification</h4>
+                            <p>Utilisez ces commandes pour vérifier les rôles, permissions et dates d'arrivée des membres.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <h4>Statistiques</h4>
+                            <p>Les informations affichées aident à comprendre la croissance et la composition de votre communauté.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Politique de Confidentialité</a>
+                    <a href="#">Conditions d'Utilisation</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ExoBot. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

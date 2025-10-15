@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commandes de Ticket - ExoBot Documentation</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="../index.html#features">Fonctionnalités</a></li>
+                    <li><a href="../index.html#docs">Documentation</a></li>
+                    <li><a href="../index.html#help">Aide</a></li>
+                </ul>
+                <a href="https://discord.com/oauth2/authorize?client_id=1423667743793746113&permissions=8&integration_type=0&scope=bot" class="invite-btn">Inviter le Bot</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="feature-detail">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Accueil</a> > <a href="../index.html#features">Fonctionnalités</a> > <span>Commandes de Ticket</span>
+            </div>
+
+            <div class="feature-header">
+                <div class="feature-icon">
+                    <i class="fas fa-ticket-alt"></i>
+                </div>
+                <div class="feature-info">
+                    <h1>Système de Tickets</h1>
+                    <p>Créez et gérez facilement des tickets de support pour aider vos membres à obtenir de l'aide personnalisée sur votre serveur Discord.</p>
+                </div>
+            </div>
+
+            <div class="feature-content">
+                <div class="feature-description">
+                    <h2>Comment ça marche ?</h2>
+                    <p>Le système de tickets d'ExoBot permet à vos membres de créer des demandes d'aide privées. Chaque ticket crée un salon dédié où les modérateurs peuvent discuter directement avec l'utilisateur concerné.</p>
+
+                    <div class="feature-illustration">
+                        <div class="discord-mockup">
+                            <div class="mockup-header">
+                                <span># général</span>
+                            </div>
+                            <div class="mockup-messages">
+                                <div class="message user">
+                                    <div class="avatar">U</div>
+                                    <div class="content">
+                                        <div class="username">Membre</div>
+                                        <div class="text">J'ai besoin d'aide avec quelque chose...</div>
+                                    </div>
+                                </div>
+                                <div class="message system">
+                                    <div class="avatar">🎫</div>
+                                    <div class="content">
+                                        <div class="username">ExoBot</div>
+                                        <div class="text">Ticket créé ! Rendez-vous dans <strong>#ticket-001</strong></div>
+                                    </div>
+                                </div>
+                                <div class="message system">
+                                    <div class="avatar">🎫</div>
+                                    <div class="content">
+                                        <div class="username">ExoBot</div>
+                                        <div class="text">Un modérateur va bientôt vous aider !</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="commands-section">
+                    <h2>Commandes de Tickets</h2>
+
+                    <div class="command-group">
+                        <h3>Configuration des tickets</h3>
+                        <div class="command-item">
+                            <div class="command-code">/poptiket</div>
+                            <div class="command-desc">Crée un panel de ticket interactif</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Gestion des tickets</h3>
+                        <div class="command-item">
+                            <div class="command-code">/closeticket</div>
+                            <div class="command-desc">Ferme le ticket actuel</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips-section">
+                    <h2>Conseils d'utilisation</h2>
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <i class="fas fa-cogs"></i>
+                            <h4>Configuration initiale</h4>
+                            <p>Utilisez /poptiket dans un salon dédié pour créer le panel principal où les membres pourront ouvrir des tickets.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-users"></i>
+                            <h4>Permissions</h4>
+                            <p>Assurez-vous que les modérateurs ont accès aux salons de tickets créés automatiquement.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-clock"></i>
+                            <h4>Gestion efficace</h4>
+                            <p>Fermez les tickets résolus avec /closeticket pour maintenir l'organisation de votre serveur.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-tags"></i>
+                            <h4>Catégorisation</h4>
+                            <p>Le système numérote automatiquement les tickets pour un suivi facile.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Politique de Confidentialité</a>
+                    <a href="#">Conditions d'Utilisation</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ExoBot. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

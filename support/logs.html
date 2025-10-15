@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Système de Logs - ExoBot Documentation</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="../index.html#features">Fonctionnalités</a></li>
+                    <li><a href="../index.html#docs">Documentation</a></li>
+                    <li><a href="../index.html#help">Aide</a></li>
+                </ul>
+                <a href="https://discord.com/oauth2/authorize?client_id=1423667743793746113&permissions=8&integration_type=0&scope=bot" class="invite-btn">Inviter le Bot</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="feature-detail">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Accueil</a> > <a href="../index.html#features">Fonctionnalités</a> > <span>Système de Logs</span>
+            </div>
+
+            <div class="feature-header">
+                <div class="feature-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="feature-info">
+                    <h1>Système de Logs Avancé</h1>
+                    <p>Enregistrez toutes les actions importantes sur votre serveur Discord avec un système de logs complet et personnalisable.</p>
+                </div>
+            </div>
+
+            <div class="feature-content">
+                <div class="feature-description">
+                    <h2>Comment ça marche ?</h2>
+                    <p>Le système de logs d'ExoBot surveille et enregistre automatiquement toutes les actions importantes sur votre serveur. Recevez des notifications détaillées dans un salon dédié pour garder un œil sur l'activité de votre communauté.</p>
+
+                    <div class="feature-illustration">
+                        <div class="discord-mockup">
+                            <div class="mockup-header">
+                                <span># logs</span>
+                            </div>
+                            <div class="mockup-messages">
+                                <div class="message system">
+                                    <div class="avatar">📝</div>
+                                    <div class="content">
+                                        <div class="username">ExoBot - Logs</div>
+                                        <div class="text">👤 <strong>@NewMember</strong> a rejoint le serveur</div>
+                                    </div>
+                                </div>
+                                <div class="message system">
+                                    <div class="avatar">🚫</div>
+                                    <div class="content">
+                                        <div class="username">ExoBot - Logs</div>
+                                        <div class="text">🔨 <strong>@Moderator</strong> a banni <strong>@BadUser</strong> (Raison: Spam)</div>
+                                    </div>
+                                </div>
+                                <div class="message system">
+                                    <div class="avatar">📝</div>
+                                    <div class="content">
+                                        <div class="username">ExoBot - Logs</div>
+                                        <div class="text">🗑️ 5 messages supprimés dans <strong>#général</strong> par <strong>@Moderator</strong></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="commands-section">
+                    <h2>Commandes de Logs</h2>
+
+                    <div class="command-group">
+                        <h3>Configuration des logs</h3>
+                        <div class="command-item">
+                            <div class="command-code">/activelogs <salon></div>
+                            <div class="command-desc">Activer les logs dans un salon spécifique</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/disablelogs</div>
+                            <div class="command-desc">Désactiver tous les logs</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Personnalisation</h3>
+                        <div class="command-item">
+                            <div class="command-code">/editlogs</div>
+                            <div class="command-desc">Modifier les types de logs activés</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips-section">
+                    <h2>Conseils d'utilisation</h2>
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Salon privé</h4>
+                            <p>Créez un salon privé visible uniquement par les modérateurs pour recevoir les logs sensibles.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-filter"></i>
+                            <h4>Filtrage personnalisé</h4>
+                            <p>Utilisez /editlogs pour choisir exactement quels événements logger selon vos besoins.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-search"></i>
+                            <h4>Recherche facile</h4>
+                            <p>Les logs sont horodatés et formatés pour une recherche rapide d'événements spécifiques.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-history"></i>
+                            <h4>Historique complet</h4>
+                            <p>Gardez une trace de toutes les actions importantes pour résoudre les conflits ou enquêter.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Politique de Confidentialité</a>
+                    <a href="#">Conditions d'Utilisation</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ExoBot. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

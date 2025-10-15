@@ -210,45 +210,69 @@ function initializeSettingsActions() {
     }
 }
 
-function saveDashboardSettings() {
+async function saveDashboardSettings() {
+    const guildSelect = document.getElementById('guild-select');
+    const selectedGuildId = guildSelect?.value;
+
+    if (!selectedGuildId) {
+        showNotification('Veuillez sélectionner un serveur avant de sauvegarder', 'error');
+        return;
+    }
+
     const settings = {
-        // Moderation settings
-        antiSpam: document.getElementById('anti-spam-toggle')?.checked || false,
-        spamThreshold: document.getElementById('spam-threshold')?.value || 5,
-        linkFilter: document.getElementById('link-filter-toggle')?.checked || false,
-        allowedDomains: document.getElementById('allowed-domains')?.value || '',
-        wordFilter: document.getElementById('word-filter-toggle')?.checked || false,
-        bannedWords: document.getElementById('banned-words')?.value || '',
-
-        // Sanctions
-        spamSanction: document.getElementById('spam-sanction')?.value || 'warn',
-        linkSanction: document.getElementById('link-sanction')?.value || 'delete',
-        wordSanction: document.getElementById('word-sanction')?.value || 'delete',
-
-        // Support settings
-        tickets: document.getElementById('tickets-toggle')?.checked || false,
-        ticketCategory: document.getElementById('ticket-category')?.value || 'Support',
-        logs: document.getElementById('logs-toggle')?.checked || false,
-        logChannel: document.getElementById('log-channel')?.value || '#logs',
-        antiRaid: document.getElementById('anti-raid-toggle')?.checked || false,
-        raidThreshold: document.getElementById('raid-threshold')?.value || 10,
-        verification: document.getElementById('verification-toggle')?.checked || false,
-        verificationRole: document.getElementById('verification-role')?.value || 'Membre',
-
-        // Utilities settings
-        games: document.getElementById('games-toggle')?.checked || false,
-        info: document.getElementById('info-toggle')?.checked || false,
-        tools: document.getElementById('tools-toggle')?.checked || false,
-
-        // General settings
-        botPrefix: document.getElementById('bot-prefix')?.value || '!',
-        botLanguage: document.getElementById('bot-language')?.value || 'fr',
-        botStatus: document.getElementById('bot-status')?.value || 'online',
-        botActivity: document.getElementById('bot-activity')?.value || 'J\'aide les membres !'
+        moderation: {
+            antiSpam: document.getElementById('anti-spam-toggle')?.checked || false,
+            spamThreshold: parseInt(document.getElementById('spam-threshold')?.value) || 5,
+            linkFilter: document.getElementById('link-filter-toggle')?.checked || false,
+            allowedDomains: document.getElementById('allowed-domains')?.value || '',
+            wordFilter: document.getElementById('word-filter-toggle')?.checked || false,
+            bannedWords: document.getElementById('banned-words')?.value || '',
+            spamSanction: document.getElementById('spam-sanction')?.value || 'warn',
+            linkSanction: document.getElementById('link-sanction')?.value || 'delete',
+            wordSanction: document.getElementById('word-sanction')?.value || 'delete'
+        },
+        support: {
+            tickets: document.getElementById('tickets-toggle')?.checked || false,
+            ticketCategory: document.getElementById('ticket-category')?.value || 'Support',
+            logs: document.getElementById('logs-toggle')?.checked || false,
+            logChannel: document.getElementById('log-channel')?.value || '#logs',
+            antiRaid: document.getElementById('anti-raid-toggle')?.checked || false,
+            raidThreshold: parseInt(document.getElementById('raid-threshold')?.value) || 10,
+            verification: document.getElementById('verification-toggle')?.checked || false,
+            verificationRole: document.getElementById('verification-role')?.value || 'Membre'
+        },
+        utilities: {
+            games: document.getElementById('games-toggle')?.checked || false,
+            info: document.getElementById('info-toggle')?.checked || false,
+            tools: document.getElementById('tools-toggle')?.checked || false
+        },
+        general: {
+            botPrefix: document.getElementById('bot-prefix')?.value || '!',
+            botLanguage: document.getElementById('bot-language')?.value || 'fr',
+            botStatus: document.getElementById('bot-status')?.value || 'online',
+            botActivity: document.getElementById('bot-activity')?.value || 'J\'aide les membres !'
+        }
     };
 
-    localStorage.setItem('dashboard_settings', JSON.stringify(settings));
-    showNotification('Paramètres sauvegardés avec succès !', 'success');
+    try {
+        const response = await fetch(`${API_BASE}/api/settings/${selectedGuildId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+            body: JSON.stringify(settings)
+        });
+
+        if (response.ok) {
+            showNotification('Paramètres sauvegardés avec succès sur le serveur !', 'success');
+        } else {
+            throw new Error('Failed to save settings');
+        }
+    } catch (error) {
+        console.error('Error saving settings:', error);
+        showNotification('Erreur lors de la sauvegarde des paramètres', 'error');
+    }
 }
 
 function loadDashboardSettings() {
@@ -666,6 +690,12 @@ function showDashboard(user) {
         // Initialize dashboard functionality
         initializeDashboard();
 
+        // Update user profile in dashboard
+        updateUserProfile(user);
+
+        // Load user guilds
+        loadUserGuilds();
+
         // Add user info to header
         const navContainer = document.querySelector('.nav-container');
         if (navContainer && !document.querySelector('.user-info')) {
@@ -680,6 +710,121 @@ function showDashboard(user) {
             `;
             navContainer.appendChild(userInfo);
         }
+    }
+}
+
+function updateUserProfile(user) {
+    const userAvatar = document.getElementById('user-avatar');
+    const userName = document.getElementById('user-name');
+    const userDiscriminator = document.getElementById('user-discriminator');
+
+    if (userAvatar) {
+        userAvatar.src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=64`;
+    }
+    if (userName) {
+        userName.textContent = user.username;
+    }
+    if (userDiscriminator) {
+        userDiscriminator.textContent = `#${user.discriminator}`;
+    }
+}
+
+async function loadUserGuilds() {
+    try {
+        const response = await fetch(`${API_BASE}/api/guilds`, {
+            credentials: 'include'
+        });
+
+        if (response.ok) {
+            const guilds = await response.json();
+            populateGuildSelector(guilds);
+        } else {
+            console.error('Failed to load guilds');
+        }
+    } catch (error) {
+        console.error('Error loading guilds:', error);
+    }
+}
+
+function populateGuildSelector(guilds) {
+    const guildSelect = document.getElementById('guild-select');
+    if (!guildSelect) return;
+
+    guildSelect.innerHTML = '<option value="">Sélectionnez un serveur</option>';
+
+    guilds.forEach(guild => {
+        const option = document.createElement('option');
+        option.value = guild.id;
+        option.textContent = guild.name;
+        guildSelect.appendChild(option);
+    });
+
+    // Add event listener for guild selection
+    guildSelect.addEventListener('change', (e) => {
+        const selectedGuildId = e.target.value;
+        if (selectedGuildId) {
+            loadGuildSettings(selectedGuildId);
+        }
+    });
+}
+
+async function loadGuildSettings(guildId) {
+    try {
+        const response = await fetch(`${API_BASE}/api/settings/${guildId}`, {
+            credentials: 'include'
+        });
+
+        if (response.ok) {
+            const settings = await response.json();
+            applySettingsToUI(settings);
+            showNotification('Paramètres chargés pour ce serveur', 'success');
+        } else {
+            console.error('Failed to load settings');
+        }
+    } catch (error) {
+        console.error('Error loading settings:', error);
+    }
+}
+
+function applySettingsToUI(settings) {
+    // Moderation settings
+    if (settings.moderation) {
+        document.getElementById('anti-spam-toggle').checked = settings.moderation.antiSpam || false;
+        document.getElementById('spam-threshold').value = settings.moderation.spamThreshold || 5;
+        document.getElementById('link-filter-toggle').checked = settings.moderation.linkFilter || false;
+        document.getElementById('allowed-domains').value = settings.moderation.allowedDomains || '';
+        document.getElementById('word-filter-toggle').checked = settings.moderation.wordFilter || false;
+        document.getElementById('banned-words').value = settings.moderation.bannedWords || '';
+
+        document.getElementById('spam-sanction').value = settings.moderation.spamSanction || 'warn';
+        document.getElementById('link-sanction').value = settings.moderation.linkSanction || 'delete';
+        document.getElementById('word-sanction').value = settings.moderation.wordSanction || 'delete';
+    }
+
+    // Support settings
+    if (settings.support) {
+        document.getElementById('tickets-toggle').checked = settings.support.tickets || false;
+        document.getElementById('ticket-category').value = settings.support.ticketCategory || 'Support';
+        document.getElementById('logs-toggle').checked = settings.support.logs || false;
+        document.getElementById('log-channel').value = settings.support.logChannel || '#logs';
+        document.getElementById('anti-raid-toggle').checked = settings.support.antiRaid || false;
+        document.getElementById('raid-threshold').value = settings.support.raidThreshold || 10;
+        document.getElementById('verification-toggle').checked = settings.support.verification || false;
+        document.getElementById('verification-role').value = settings.support.verificationRole || 'Membre';
+    }
+
+    // Utilities settings
+    if (settings.utilities) {
+        document.getElementById('games-toggle').checked = settings.utilities.games || false;
+        document.getElementById('info-toggle').checked = settings.utilities.info || false;
+        document.getElementById('tools-toggle').checked = settings.utilities.tools || false;
+    }
+
+    // General settings
+    if (settings.general) {
+        document.getElementById('bot-language').value = settings.general.botLanguage || 'fr';
+        document.getElementById('bot-status').value = settings.general.botStatus || 'online';
+        document.getElementById('bot-activity').value = settings.general.botActivity || 'J\'aide les membres !';
     }
 }
 

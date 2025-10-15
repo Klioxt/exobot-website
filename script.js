@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Gestion des onglets
+// Gestion des onglets (features et dashboard)
 const tabButtons = document.querySelectorAll('.tab-btn');
 const tabPanes = document.querySelectorAll('.tab-pane');
 
@@ -72,6 +72,305 @@ tabButtons.forEach(button => {
         });
     }
 });
+
+// Dashboard functionality
+function initializeDashboard() {
+    // Tab switching for dashboard
+    const dashboardTabButtons = document.querySelectorAll('.dashboard-tabs .tab-btn');
+    const dashboardTabPanes = document.querySelectorAll('.dashboard-tabs .tab-pane');
+
+    dashboardTabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Remove active class from all buttons
+            dashboardTabButtons.forEach(btn => btn.classList.remove('active'));
+            // Add active class to clicked button
+            button.classList.add('active');
+
+            // Hide all panes
+            dashboardTabPanes.forEach(pane => pane.classList.remove('active'));
+
+            // Show corresponding pane
+            const tabId = button.getAttribute('data-tab');
+            const targetPane = document.getElementById(tabId);
+            if (targetPane) {
+                targetPane.classList.add('active');
+            }
+        });
+    });
+
+    // Role management
+    initializeRoleManagement();
+
+    // Settings actions
+    initializeSettingsActions();
+
+    // Load saved settings
+    loadDashboardSettings();
+}
+
+function initializeRoleManagement() {
+    // Add role functionality
+    const addModBtn = document.querySelector('#mod-role + .add-role-btn');
+    const addAdminBtn = document.querySelector('#admin-role + .add-role-btn');
+
+    if (addModBtn) {
+        addModBtn.addEventListener('click', () => addRole('mod'));
+    }
+
+    if (addAdminBtn) {
+        addAdminBtn.addEventListener('click', () => addRole('admin'));
+    }
+
+    // Load saved roles
+    loadSavedRoles();
+}
+
+function addRole(type) {
+    const input = document.getElementById(`${type}-role`);
+    const roleName = input.value.trim();
+
+    if (roleName) {
+        const roleList = document.getElementById(`${type}-roles-list`);
+        const roleTag = document.createElement('div');
+        roleTag.className = 'role-tag';
+        roleTag.innerHTML = `
+            ${roleName}
+            <span class="remove-role" onclick="removeRole(this, '${type}')">&times;</span>
+        `;
+        roleList.appendChild(roleTag);
+        input.value = '';
+
+        // Save to localStorage
+        saveRole(type, roleName);
+    }
+}
+
+function removeRole(element, type) {
+    const roleTag = element.parentElement;
+    const roleName = roleTag.textContent.replace('×', '').trim();
+    roleTag.remove();
+
+    // Remove from localStorage
+    removeSavedRole(type, roleName);
+}
+
+function saveRole(type, roleName) {
+    const roles = JSON.parse(localStorage.getItem(`dashboard_${type}_roles`) || '[]');
+    if (!roles.includes(roleName)) {
+        roles.push(roleName);
+        localStorage.setItem(`dashboard_${type}_roles`, JSON.stringify(roles));
+    }
+}
+
+function removeSavedRole(type, roleName) {
+    const roles = JSON.parse(localStorage.getItem(`dashboard_${type}_roles`) || '[]');
+    const index = roles.indexOf(roleName);
+    if (index > -1) {
+        roles.splice(index, 1);
+        localStorage.setItem(`dashboard_${type}_roles`, JSON.stringify(roles));
+    }
+}
+
+function loadSavedRoles() {
+    ['mod', 'admin'].forEach(type => {
+        const roles = JSON.parse(localStorage.getItem(`dashboard_${type}_roles`) || '[]');
+        const roleList = document.getElementById(`${type}-roles-list`);
+
+        if (roleList) {
+            roles.forEach(roleName => {
+                const roleTag = document.createElement('div');
+                roleTag.className = 'role-tag';
+                roleTag.innerHTML = `
+                    ${roleName}
+                    <span class="remove-role" onclick="removeRole(this, '${type}')">&times;</span>
+                `;
+                roleList.appendChild(roleTag);
+            });
+        }
+    });
+}
+
+function initializeSettingsActions() {
+    // Save settings
+    const saveBtn = document.querySelector('.save-btn');
+    if (saveBtn) {
+        saveBtn.addEventListener('click', saveDashboardSettings);
+    }
+
+    // Reset settings
+    const resetBtn = document.querySelector('.reset-btn');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', resetDashboardSettings);
+    }
+
+    // Export settings
+    const exportBtn = document.querySelector('.export-btn');
+    if (exportBtn) {
+        exportBtn.addEventListener('click', exportDashboardSettings);
+    }
+}
+
+function saveDashboardSettings() {
+    const settings = {
+        // Moderation settings
+        antiSpam: document.getElementById('anti-spam-toggle')?.checked || false,
+        spamThreshold: document.getElementById('spam-threshold')?.value || 5,
+        linkFilter: document.getElementById('link-filter-toggle')?.checked || false,
+        allowedDomains: document.getElementById('allowed-domains')?.value || '',
+        wordFilter: document.getElementById('word-filter-toggle')?.checked || false,
+        bannedWords: document.getElementById('banned-words')?.value || '',
+
+        // Sanctions
+        spamSanction: document.getElementById('spam-sanction')?.value || 'warn',
+        linkSanction: document.getElementById('link-sanction')?.value || 'delete',
+        wordSanction: document.getElementById('word-sanction')?.value || 'delete',
+
+        // Support settings
+        tickets: document.getElementById('tickets-toggle')?.checked || false,
+        ticketCategory: document.getElementById('ticket-category')?.value || 'Support',
+        logs: document.getElementById('logs-toggle')?.checked || false,
+        logChannel: document.getElementById('log-channel')?.value || '#logs',
+        antiRaid: document.getElementById('anti-raid-toggle')?.checked || false,
+        raidThreshold: document.getElementById('raid-threshold')?.value || 10,
+        verification: document.getElementById('verification-toggle')?.checked || false,
+        verificationRole: document.getElementById('verification-role')?.value || 'Membre',
+
+        // Utilities settings
+        games: document.getElementById('games-toggle')?.checked || false,
+        info: document.getElementById('info-toggle')?.checked || false,
+        tools: document.getElementById('tools-toggle')?.checked || false,
+
+        // General settings
+        botPrefix: document.getElementById('bot-prefix')?.value || '!',
+        botLanguage: document.getElementById('bot-language')?.value || 'fr',
+        botStatus: document.getElementById('bot-status')?.value || 'online',
+        botActivity: document.getElementById('bot-activity')?.value || 'J\'aide les membres !'
+    };
+
+    localStorage.setItem('dashboard_settings', JSON.stringify(settings));
+    showNotification('Paramètres sauvegardés avec succès !', 'success');
+}
+
+function loadDashboardSettings() {
+    const settings = JSON.parse(localStorage.getItem('dashboard_settings') || '{}');
+
+    // Load moderation settings
+    if (document.getElementById('anti-spam-toggle')) {
+        document.getElementById('anti-spam-toggle').checked = settings.antiSpam || false;
+        document.getElementById('spam-threshold').value = settings.spamThreshold || 5;
+        document.getElementById('link-filter-toggle').checked = settings.linkFilter || false;
+        document.getElementById('allowed-domains').value = settings.allowedDomains || '';
+        document.getElementById('word-filter-toggle').checked = settings.wordFilter || false;
+        document.getElementById('banned-words').value = settings.bannedWords || '';
+    }
+
+    // Load sanctions
+    if (document.getElementById('spam-sanction')) {
+        document.getElementById('spam-sanction').value = settings.spamSanction || 'warn';
+        document.getElementById('link-sanction').value = settings.linkSanction || 'delete';
+        document.getElementById('word-sanction').value = settings.wordSanction || 'delete';
+    }
+
+    // Load support settings
+    if (document.getElementById('tickets-toggle')) {
+        document.getElementById('tickets-toggle').checked = settings.tickets || false;
+        document.getElementById('ticket-category').value = settings.ticketCategory || 'Support';
+        document.getElementById('logs-toggle').checked = settings.logs || false;
+        document.getElementById('log-channel').value = settings.logChannel || '#logs';
+        document.getElementById('anti-raid-toggle').checked = settings.antiRaid || false;
+        document.getElementById('raid-threshold').value = settings.raidThreshold || 10;
+        document.getElementById('verification-toggle').checked = settings.verification || false;
+        document.getElementById('verification-role').value = settings.verificationRole || 'Membre';
+    }
+
+    // Load utilities settings
+    if (document.getElementById('games-toggle')) {
+        document.getElementById('games-toggle').checked = settings.games || false;
+        document.getElementById('info-toggle').checked = settings.info || false;
+        document.getElementById('tools-toggle').checked = settings.tools || false;
+    }
+
+    // Load general settings
+    if (document.getElementById('bot-prefix')) {
+        document.getElementById('bot-prefix').value = settings.botPrefix || '!';
+        document.getElementById('bot-language').value = settings.botLanguage || 'fr';
+        document.getElementById('bot-status').value = settings.botStatus || 'online';
+        document.getElementById('bot-activity').value = settings.botActivity || 'J\'aide les membres !';
+    }
+}
+
+function resetDashboardSettings() {
+    if (confirm('Êtes-vous sûr de vouloir réinitialiser tous les paramètres ?')) {
+        localStorage.removeItem('dashboard_settings');
+        localStorage.removeItem('dashboard_mod_roles');
+        localStorage.removeItem('dashboard_admin_roles');
+        location.reload();
+    }
+}
+
+function exportDashboardSettings() {
+    const settings = {
+        settings: JSON.parse(localStorage.getItem('dashboard_settings') || '{}'),
+        modRoles: JSON.parse(localStorage.getItem('dashboard_mod_roles') || '[]'),
+        adminRoles: JSON.parse(localStorage.getItem('dashboard_admin_roles') || '[]')
+    };
+
+    const dataStr = JSON.stringify(settings, null, 2);
+    const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr);
+
+    const exportFileDefaultName = 'exobot-dashboard-config.json';
+
+    const linkElement = document.createElement('a');
+    linkElement.setAttribute('href', dataUri);
+    linkElement.setAttribute('download', exportFileDefaultName);
+    linkElement.click();
+
+    showNotification('Configuration exportée avec succès !', 'success');
+}
+
+function showNotification(message, type = 'info') {
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    notification.style.cssText = `
+        position: fixed;
+        top: 90px;
+        right: 20px;
+        background: ${type === 'success' ? '#10b981' : '#ef4444'};
+        color: white;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        z-index: 10000;
+        animation: slideInRight 0.3s ease-out;
+    `;
+
+    document.body.appendChild(notification);
+
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.style.animation = 'slideOutRight 0.3s ease-in';
+        setTimeout(() => notification.remove(), 300);
+    }, 3000);
+}
+
+// Add notification animations to CSS
+const notificationStyles = `
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideOutRight {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+}
+`;
+
+const notificationStyleSheet = document.createElement('style');
+notificationStyleSheet.textContent = notificationStyles;
+document.head.appendChild(notificationStyleSheet);
 
 // Animation au défilement
 const observerOptions = {
@@ -322,9 +621,12 @@ function showDashboard(user) {
         authSection.style.display = 'none';
     }
 
-    const dashboardContent = document.querySelector('.dashboard-features');
-    if (dashboardContent) {
-        dashboardContent.style.display = 'block';
+    const dashboardControl = document.querySelector('.dashboard-control');
+    if (dashboardControl) {
+        dashboardControl.style.display = 'block';
+
+        // Initialize dashboard functionality
+        initializeDashboard();
 
         // Add user info to header
         const navContainer = document.querySelector('.nav-container');

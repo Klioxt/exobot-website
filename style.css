@@ -52,6 +52,7 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 70px;
+    gap: 20px;
 }
 
 .logo {
@@ -611,6 +612,457 @@ header {
 .auth-note {
     margin-top: 1.5rem;
     opacity: 0.7;
+}
+
+/* Dashboard Control Panel */
+.dashboard-control {
+    padding: 4rem 0;
+    background: var(--dark-bg);
+}
+
+.dashboard-tabs {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.tab-buttons {
+    display: flex;
+    background: var(--darker-bg);
+    border-radius: 15px 15px 0 0;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 1rem 2rem;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    border-bottom: 3px solid transparent;
+}
+
+.tab-btn.active {
+    color: var(--primary-color);
+    background: var(--light-bg);
+    border-bottom-color: var(--primary-color);
+}
+
+.tab-btn:hover {
+    color: var(--text-light);
+    background: var(--light-bg);
+}
+
+.tab-content {
+    background: var(--light-bg);
+    border-radius: 0 15px 15px 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Dashboard Overview */
+.dashboard-overview {
+    display: grid;
+    gap: 2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background: var(--darker-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.stat-info h3 {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-light);
+    margin: 0;
+}
+
+.recent-activity {
+    background: var(--darker-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.recent-activity h3 {
+    margin-bottom: 1rem;
+    color: var(--text-light);
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    background: var(--dark-bg);
+    border-radius: 8px;
+}
+
+.activity-icon {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+.activity-content {
+    flex: 1;
+}
+
+.activity-content p {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.activity-time {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* Dashboard Control Sections */
+.control-section {
+    margin-bottom: 3rem;
+}
+
+.control-section h3 {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.control-item {
+    background: var(--darker-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.control-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.control-header h4 {
+    margin: 0;
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.control-item p {
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.control-settings {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.control-settings label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.control-settings input,
+.control-settings textarea,
+.control-settings select {
+    padding: 0.5rem;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 5px;
+    background: var(--dark-bg);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.control-settings textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+/* Switch Toggle */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 24px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Sanctions Grid */
+.sanctions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.sanction-item {
+    background: var(--darker-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.sanction-item h4 {
+    margin: 0 0 0.5rem 0;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.sanction-item select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 5px;
+    background: var(--dark-bg);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Settings Grid */
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.setting-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.setting-item label {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.setting-item input,
+.setting-item select {
+    padding: 0.75rem;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 5px;
+    background: var(--dark-bg);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Permissions */
+.permissions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.permission-item {
+    background: var(--darker-bg);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(99, 102, 241, 0.1);
+}
+
+.permission-item h4 {
+    margin: 0 0 1rem 0;
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.role-inputs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.role-inputs input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 5px;
+    background: var(--dark-bg);
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.add-role-btn {
+    padding: 0.5rem 1rem;
+    background: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.add-role-btn:hover {
+    background: var(--secondary-color);
+}
+
+.role-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.role-tag {
+    background: var(--primary-color);
+    color: var(--text-light);
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.role-tag .remove-role {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.role-tag .remove-role:hover {
+    opacity: 1;
+}
+
+/* Actions */
+.actions-grid {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.action-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.save-btn {
+    background: #10b981;
+    color: white;
+}
+
+.save-btn:hover {
+    background: #059669;
+    transform: translateY(-2px);
+}
+
+.reset-btn {
+    background: #f59e0b;
+    color: white;
+}
+
+.reset-btn:hover {
+    background: #d97706;
+    transform: translateY(-2px);
+}
+
+.export-btn {
+    background: #6366f1;
+    color: white;
+}
+
+.export-btn:hover {
+    background: #4f46e5;
+    transform: translateY(-2px);
 }
 
 .dashboard-features {

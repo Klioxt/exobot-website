@@ -89,39 +89,47 @@ const observer = new IntersectionObserver((entries) => {
 // Observer les sections pour l'animation au défilement
 const sections = document.querySelectorAll('.features, .docs, .help');
 sections.forEach(section => {
-    section.style.opacity = '0';
-    section.style.transform = 'translateY(50px)';
-    section.style.transition = 'all 0.6s ease-out';
-    observer.observe(section);
+    if (section) {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(50px)';
+        section.style.transition = 'all 0.6s ease-out';
+        observer.observe(section);
+    }
 });
 
 // Observer les éléments de fonctionnalité
 const featureItems = document.querySelectorAll('.feature-item');
 featureItems.forEach((item, index) => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(30px)';
-    item.style.transition = 'all 0.6s ease-out';
-    item.style.transitionDelay = `${index * 0.1}s`;
-    observer.observe(item);
+    if (item) {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = 'all 0.6s ease-out';
+        item.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(item);
+    }
 });
 
 // Observer les éléments de docs et help
 const docsItems = document.querySelectorAll('.docs-info, .docs-buttons');
 docsItems.forEach((item, index) => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(30px)';
-    item.style.transition = 'all 0.6s ease-out';
-    item.style.transitionDelay = `${index * 0.1}s`;
-    observer.observe(item);
+    if (item) {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = 'all 0.6s ease-out';
+        item.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(item);
+    }
 });
 
 const helpItems = document.querySelectorAll('.help-item');
 helpItems.forEach((item, index) => {
-    item.style.opacity = '0';
-    item.style.transform = 'translateY(30px)';
-    item.style.transition = 'all 0.6s ease-out';
-    item.style.transitionDelay = `${index * 0.1}s`;
-    observer.observe(item);
+    if (item) {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = 'all 0.6s ease-out';
+        item.style.transitionDelay = `${index * 0.1}s`;
+        observer.observe(item);
+    }
 });
 
 // Navigation fluide

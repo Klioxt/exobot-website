@@ -55,20 +55,24 @@ const tabButtons = document.querySelectorAll('.tab-btn');
 const tabPanes = document.querySelectorAll('.tab-pane');
 
 tabButtons.forEach(button => {
-    button.addEventListener('click', () => {
-        // Retirer la classe active de tous les boutons
-        tabButtons.forEach(btn => btn.classList.remove('active'));
-        // Ajouter la classe active au bouton cliqué
-        button.classList.add('active');
+    if (button) {
+        button.addEventListener('click', () => {
+            // Retirer la classe active de tous les boutons
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            // Ajouter la classe active au bouton cliqué
+            button.classList.add('active');
 
-        // Cacher tous les panneaux
-        tabPanes.forEach(pane => pane.classList.remove('active'));
+            // Cacher tous les panneaux
+            tabPanes.forEach(pane => pane.classList.remove('active'));
 
-        // Afficher le panneau correspondant
-        const tabId = button.getAttribute('data-tab');
-        const targetPane = document.getElementById(tabId);
-        targetPane.classList.add('active');
-    });
+            // Afficher le panneau correspondant
+            const tabId = button.getAttribute('data-tab');
+            const targetPane = document.getElementById(tabId);
+            if (targetPane) {
+                targetPane.classList.add('active');
+            }
+        });
+    }
 });
 
 // Animation au défilement
@@ -242,15 +246,19 @@ window.addEventListener('resize', function() {
         // Ajustements pour mobile
         const elements = document.querySelectorAll('.element');
         elements.forEach(element => {
-            element.style.width = '60px';
-            element.style.height = '60px';
+            if (element) {
+                element.style.width = '60px';
+                element.style.height = '60px';
+            }
         });
     } else {
         // Ajustements pour desktop
         const elements = document.querySelectorAll('.element');
         elements.forEach(element => {
-            element.style.width = '80px';
-            element.style.height = '80px';
+            if (element) {
+                element.style.width = '80px';
+                element.style.height = '80px';
+            }
         });
     }
 });

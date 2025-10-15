@@ -463,6 +463,16 @@ navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
+
+        if (targetId === '#') {
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            return;
+        }
+
         const targetSection = document.querySelector(targetId);
 
         if (targetSection) {
@@ -585,7 +595,7 @@ window.addEventListener('resize', function() {
 });
 
 // Dashboard authentication system
-const API_BASE = 'https://exobot-dashboard-api.herokuapp.com'; // Replace with your backend URL
+const API_BASE = 'http://localhost:3001'; // Local development URL
 
 function handleDashboardAuth() {
     console.log('handleDashboardAuth called');

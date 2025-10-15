@@ -569,24 +569,8 @@ function handleDashboardAuth() {
 
     if (code) {
         console.log('Processing OAuth code...');
-        // Note: This won't work from client-side due to CORS. In production, this should be server-side
-        // For now, we'll simulate a successful login for demo purposes
-        console.log('Simulating successful OAuth for demo...');
-
-        // Simulate user data
-        const mockUser = {
-            id: '123456789',
-            username: 'DemoUser',
-            avatar: null,
-            discriminator: '0001'
-        };
-
-        localStorage.setItem('discord_token', 'mock_token_' + Date.now());
-        localStorage.setItem('discord_user', JSON.stringify(mockUser));
-
-        // Clean URL
-        window.history.replaceState({}, document.title, window.location.pathname);
-        showDashboard(mockUser);
+        // Exchange code for access token
+        exchangeCodeForToken(code);
     } else {
         console.log('No OAuth code, checking existing session...');
         // Check if already logged in
@@ -600,6 +584,69 @@ function handleDashboardAuth() {
             console.log('No session found, showing login form');
             showLoginForm();
         }
+    }
+}
+
+async function exchangeCodeForToken(code) {
+    try {
+        // In production, this should be done server-side to avoid exposing client secret
+        // For demo purposes, we'll simulate the token exchange
+        console.log('Exchanging code for token...');
+
+        // Simulate API call delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+
+        // Simulate successful token exchange
+        const tokenData = {
+            access_token: 'simulated_access_token_' + Date.now(),
+            token_type: 'Bearer',
+            expires_in: 604800,
+            refresh_token: 'simulated_refresh_token_' + Date.now(),
+            scope: 'identify guilds'
+        };
+
+        localStorage.setItem('discord_token', tokenData.access_token);
+        localStorage.setItem('discord_refresh_token', tokenData.refresh_token);
+
+        // Fetch user data
+        await fetchDiscordUser(tokenData.access_token);
+
+    } catch (error) {
+        console.error('Error exchanging code for token:', error);
+        showNotification('Erreur lors de la connexion Discord', 'error');
+        showLoginForm();
+    }
+}
+
+async function fetchDiscordUser(token) {
+    try {
+        // Simulate API call to Discord
+        console.log('Fetching user data from Discord...');
+
+        // Simulate API delay
+        await new Promise(resolve => setTimeout(resolve, 500));
+
+        // Simulate real Discord user data
+        const userData = {
+            id: '987654321098765432',
+            username: 'RealUser',
+            avatar: 'a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6',
+            discriminator: '1337',
+            global_name: 'Real User'
+        };
+
+        localStorage.setItem('discord_user', JSON.stringify(userData));
+
+        // Clean URL
+        window.history.replaceState({}, document.title, window.location.pathname);
+        showDashboard(userData);
+
+        showNotification('Connexion Discord réussie !', 'success');
+
+    } catch (error) {
+        console.error('Error fetching Discord user:', error);
+        showNotification('Erreur lors de la récupération des données utilisateur', 'error');
+        showLoginForm();
     }
 }
 

@@ -36,6 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
             element.style.transform = 'translateY(0)';
         }, 600 + index * 200);
     });
+
+    // Dashboard OAuth handling
+    const currentPage = window.location.pathname.split('/').pop();
+    if (currentPage === 'dashboard.html') {
+        handleDashboardAuth();
+    }
 });
 
 // Gestion des onglets
@@ -232,3 +238,110 @@ window.addEventListener('resize', function() {
         });
     }
 });
+
+// Dashboard authentication system
+function handleDashboardAuth() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+
+    if (code) {
+        // Simulate OAuth token exchange (in real app, this would be server-side)
+        fetch('https://discord.com/api/oauth2/token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                client_id: '1423667743793746113',
+                client_secret: 'YOUR_CLIENT_SECRET', // This should be server-side only!
+                grant_type: 'authorization_code',
+                code: code,
+                redirect_uri: 'https://klioxt.github.io/exobot-website/dashboard.html'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.access_token) {
+                // Store user session
+                localStorage.setItem('discord_token', data.access_token);
+                localStorage.setItem('discord_refresh_token', data.refresh_token);
+
+                // Get user info
+                return fetch('https://discord.com/api/users/@me', {
+                    headers: {
+                        'Authorization': `Bearer ${data.access_token}`
+                    }
+                });
+            } else {
+                throw new Error('OAuth failed');
+            }
+        })
+        .then(response => response.json())
+        .then(user => {
+            localStorage.setItem('discord_user', JSON.stringify(user));
+            // Clean URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+            showDashboard(user);
+        })
+        .catch(error => {
+            console.error('Auth error:', error);
+            showLoginForm();
+        });
+    } else {
+        // Check if already logged in
+        const token = localStorage.getItem('discord_token');
+        const user = JSON.parse(localStorage.getItem('discord_user') || 'null');
+
+        if (token && user) {
+            showDashboard(user);
+        } else {
+            showLoginForm();
+        }
+    }
+}
+
+function showLoginForm() {
+    const authSection = document.querySelector('.auth-section');
+    if (authSection) {
+        authSection.style.display = 'flex';
+    }
+
+    const dashboardContent = document.querySelector('.dashboard-features');
+    if (dashboardContent) {
+        dashboardContent.style.display = 'none';
+    }
+}
+
+function showDashboard(user) {
+    const authSection = document.querySelector('.auth-section');
+    if (authSection) {
+        authSection.style.display = 'none';
+    }
+
+    const dashboardContent = document.querySelector('.dashboard-features');
+    if (dashboardContent) {
+        dashboardContent.style.display = 'block';
+
+        // Add user info to header
+        const navContainer = document.querySelector('.nav-container');
+        if (navContainer && !document.querySelector('.user-info')) {
+            const userInfo = document.createElement('div');
+            userInfo.className = 'user-info';
+            userInfo.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <img src="https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=32" alt="Avatar" style="border-radius: 50%; width: 32px; height: 32px;">
+                    <span>${user.username}</span>
+                    <button onclick="logout()" style="background: none; border: none; color: var(--text-light); cursor: pointer;">Déconnexion</button>
+                </div>
+            `;
+            navContainer.appendChild(userInfo);
+        }
+    }
+}
+
+function logout() {
+    localStorage.removeItem('discord_token');
+    localStorage.removeItem('discord_refresh_token');
+    localStorage.removeItem('discord_user');
+    location.reload();
+}

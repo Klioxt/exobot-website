@@ -2,24 +2,28 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Animation des éléments du header
     const header = document.querySelector('header');
-    header.style.opacity = '0';
-    header.style.transform = 'translateY(-20px)';
-    setTimeout(() => {
-        header.style.transition = 'all 0.6s ease-out';
-        header.style.opacity = '1';
-        header.style.transform = 'translateY(0)';
-    }, 100);
+    if (header) {
+        header.style.opacity = '0';
+        header.style.transform = 'translateY(-20px)';
+        setTimeout(() => {
+            header.style.transition = 'all 0.6s ease-out';
+            header.style.opacity = '1';
+            header.style.transform = 'translateY(0)';
+        }, 100);
+    }
 
     // Animation des éléments flottants
     const elements = document.querySelectorAll('.element');
     elements.forEach((element, index) => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(50px) scale(0.8)';
-        setTimeout(() => {
-            element.style.transition = 'all 0.8s ease-out';
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0) scale(1)';
-        }, 300 + index * 200);
+        if (element) {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(50px) scale(0.8)';
+            setTimeout(() => {
+                element.style.transition = 'all 0.8s ease-out';
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0) scale(1)';
+            }, 300 + index * 200);
+        }
     });
 
     // Animation du texte du héros
@@ -28,13 +32,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroButtons = document.querySelector('.hero-buttons');
 
     [heroText, heroParagraph, heroButtons].forEach((element, index) => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        setTimeout(() => {
-            element.style.transition = 'all 0.6s ease-out';
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-        }, 600 + index * 200);
+        if (element) {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            setTimeout(() => {
+                element.style.transition = 'all 0.6s ease-out';
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            }, 600 + index * 200);
+        }
     });
 
     // Dashboard OAuth handling

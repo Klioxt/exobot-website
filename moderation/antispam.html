@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti-Spam - ExoBot Documentation</title>
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Accueil</a></li>
+                    <li><a href="../index.html#features">Fonctionnalités</a></li>
+                    <li><a href="../index.html#docs">Documentation</a></li>
+                    <li><a href="../index.html#help">Aide</a></li>
+                </ul>
+                <a href="https://discord.com/oauth2/authorize?client_id=1423667743793746113&permissions=8&integration_type=0&scope=bot" class="invite-btn">Inviter le Bot</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="feature-detail">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Accueil</a> > <a href="../index.html#features">Fonctionnalités</a> > <span>Anti-Spam</span>
+            </div>
+
+            <div class="feature-header">
+                <div class="feature-icon">
+                    <i class="fas fa-ban"></i>
+                </div>
+                <div class="feature-info">
+                    <h1>Anti-Spam</h1>
+                    <p>Protégez votre serveur Discord contre les messages indésirables, les raids et le spam automatique avec notre système avancé de détection et de prévention.</p>
+                </div>
+            </div>
+
+            <div class="feature-content">
+                <div class="feature-description">
+                    <h2>Comment ça marche ?</h2>
+                    <p>Le système anti-spam d'ExoBot surveille en temps réel tous les messages envoyés sur votre serveur. Il analyse le contenu, la fréquence d'envoi et les patterns suspects pour identifier et bloquer automatiquement les spams.</p>
+
+                    <div class="feature-illustration">
+                        <div class="discord-mockup">
+                            <div class="mockup-header">
+                                <span># général</span>
+                            </div>
+                            <div class="mockup-messages">
+                                <div class="message user">
+                                    <div class="avatar">U</div>
+                                    <div class="content">
+                                        <div class="username">Utilisateur Normal</div>
+                                        <div class="text">Salut tout le monde !</div>
+                                    </div>
+                                </div>
+                                <div class="message spam blocked">
+                                    <div class="avatar">S</div>
+                                    <div class="content">
+                                        <div class="username">Spammer123</div>
+                                        <div class="text">ACHETEZ NOS PRODUITS !!!!</div>
+                                        <div class="block-notice">🚫 Message bloqué par Anti-Spam</div>
+                                    </div>
+                                </div>
+                                <div class="message user">
+                                    <div class="avatar">M</div>
+                                    <div class="content">
+                                        <div class="username">Modérateur</div>
+                                        <div class="text">Le spam a été automatiquement supprimé !</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="commands-section">
+                    <h2>Commandes Anti-Spam</h2>
+
+                    <div class="command-group">
+                        <h3>Configuration de base</h3>
+                        <div class="command-item">
+                            <div class="command-code">/antispam enable</div>
+                            <div class="command-desc">Active le système anti-spam sur le serveur</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/antispam disable</div>
+                            <div class="command-desc">Désactive le système anti-spam</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/antispam status</div>
+                            <div class="command-desc">Affiche l'état actuel du système anti-spam</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Paramètres avancés</h3>
+                        <div class="command-item">
+                            <div class="command-code">/antispam sensitivity <niveau></div>
+                            <div class="command-desc">Définit la sensibilité (1-10, 5 par défaut)</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/antispam max_messages <nombre></div>
+                            <div class="command-desc">Nombre maximum de messages par minute (5 par défaut)</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/antispam timeout <secondes></div>
+                            <div class="command-desc">Durée du timeout pour les spammeurs (60s par défaut)</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Actions automatiques</h3>
+                        <div class="command-item">
+                            <div class="command-code">/antispam action warn</div>
+                            <div class="command-desc">Avertit les utilisateurs qui spamment</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/antispam action mute</div>
+                            <div class="command-desc">Mute automatiquement les spammeurs</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/antispam action kick</div>
+                            <div class="command-desc">Expulse les spammeurs récidivistes</div>
+                        </div>
+                    </div>
+
+                    <div class="command-group">
+                        <h3>Whitelist et exceptions</h3>
+                        <div class="command-item">
+                            <div class="command-code">/antispam whitelist add <utilisateur></div>
+                            <div class="command-desc">Ajoute un utilisateur à la whitelist</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/antispam whitelist remove <utilisateur></div>
+                            <div class="command-desc">Retire un utilisateur de la whitelist</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/antispam ignore_channel <salon></div>
+                            <div class="command-desc">Ignore un salon spécifique</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tips-section">
+                    <h2>Conseils d'utilisation</h2>
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <h4>Sensibilité optimale</h4>
+                            <p>Commencez avec une sensibilité de 5. Augmentez-la si vous recevez trop de faux positifs.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Permissions requises</h4>
+                            <p>Assurez-vous qu'ExoBot a les permissions "Gérer les messages" et "Timeout des membres".</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-users"></i>
+                            <h4>Whitelist importante</h4>
+                            <p>Ajoutez vos modérateurs et bots de confiance à la whitelist pour éviter les blocages accidentels.</p>
+                        </div>
+                        <div class="tip-item">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Surveillance</h4>
+                            <p>Vérifiez régulièrement les logs pour ajuster les paramètres selon l'activité de votre serveur.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-robot"></i>
+                    <span>ExoBot</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Politique de Confidentialité</a>
+                    <a href="#">Conditions d'Utilisation</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ExoBot. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>

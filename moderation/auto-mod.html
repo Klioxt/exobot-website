@@ -84,102 +84,50 @@
                     <h2>Commandes de Modération Automatique</h2>
 
                     <div class="command-group">
-                        <h3>Configuration générale</h3>
+                        <h3>Commandes de modération de base</h3>
                         <div class="command-item">
-                            <div class="command-code">/automod enable</div>
-                            <div class="command-desc">Active la modération automatique sur le serveur</div>
+                            <div class="command-code">/ban <utilisateur> [raison]</div>
+                            <div class="command-desc">Bannir un utilisateur du serveur</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/automod disable</div>
-                            <div class="command-desc">Désactive la modération automatique</div>
+                            <div class="command-code">/kick <utilisateur> [raison]</div>
+                            <div class="command-desc">Expulser un utilisateur du serveur</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/automod status</div>
-                            <div class="command-desc">Affiche l'état actuel de la modération automatique</div>
+                            <div class="command-code">/mute <utilisateur></div>
+                            <div class="command-desc">Muter un utilisateur en ajoutant un rôle Muted</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/automod logs</div>
-                            <div class="command-desc">Affiche les logs des actions automatiques récentes</div>
-                        </div>
-                    </div>
-
-                    <div class="command-group">
-                        <h3>Règles de contenu</h3>
-                        <div class="command-item">
-                            <div class="command-code">/automod badwords enable</div>
-                            <div class="command-desc">Active la détection des mots inappropriés</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/automod badwords add <mot></div>
-                            <div class="command-desc">Ajoute un mot à la liste des mots interdits</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/automod badwords remove <mot></div>
-                            <div class="command-desc">Retire un mot de la liste des mots interdits</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/automod links block</div>
-                            <div class="command-desc">Bloque automatiquement les liens suspects</div>
+                            <div class="command-code">/clear <nombre></div>
+                            <div class="command-desc">Supprimer un nombre de messages (1-100)</div>
                         </div>
                     </div>
 
                     <div class="command-group">
-                        <h3>Système d'avertissements</h3>
+                        <h3>Gestion des mots interdits</h3>
                         <div class="command-item">
-                            <div class="command-code">/automod warn setup <seuil></div>
-                            <div class="command-desc">Configure le nombre d'avertissements avant sanction (défaut: 3)</div>
+                            <div class="command-code">/badwords <mot></div>
+                            <div class="command-desc">Ajouter un mot interdit</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/automod warn action <sanction></div>
-                            <div class="command-desc">Définit l'action après seuil atteint (mute/kick/ban)</div>
+                            <div class="command-code">/badwordslist</div>
+                            <div class="command-desc">Afficher la liste des mots interdits</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/automod warn reset <utilisateur></div>
-                            <div class="command-desc">Remet à zéro les avertissements d'un utilisateur</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/automod warn list <utilisateur></div>
-                            <div class="command-desc">Affiche l'historique des avertissements d'un utilisateur</div>
+                            <div class="command-code">/delbadwords</div>
+                            <div class="command-desc">Supprimer des mots interdits</div>
                         </div>
                     </div>
 
                     <div class="command-group">
-                        <h3>Actions automatiques</h3>
+                        <h3>Configuration automatique</h3>
                         <div class="command-item">
-                            <div class="command-code">/automod action timeout <durée></div>
-                            <div class="command-desc">Configure la durée du timeout automatique (défaut: 10min)</div>
+                            <div class="command-code">/autorole <role></div>
+                            <div class="command-desc">Définir le rôle à donner automatiquement aux nouveaux membres</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/automod action mute <durée></div>
-                            <div class="command-desc">Configure la durée du mute automatique (défaut: 1h)</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/automod action kick</div>
-                            <div class="command-desc">Active l'expulsion automatique après avertissements</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/automod action ban</div>
-                            <div class="command-desc">Active le bannissement automatique pour les récidivistes</div>
-                        </div>
-                    </div>
-
-                    <div class="command-group">
-                        <h3>Exceptions et whitelist</h3>
-                        <div class="command-item">
-                            <div class="command-code">/automod exempt add <rôle></div>
-                            <div class="command-desc">Exempte un rôle de la modération automatique</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/automod exempt remove <rôle></div>
-                            <div class="command-desc">Retire l'exemption d'un rôle</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/automod exempt list</div>
-                            <div class="command-desc">Affiche la liste des rôles exemptés</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/automod channel ignore <salon></div>
-                            <div class="command-desc">Ignore un salon dans la modération automatique</div>
+                            <div class="command-code">/renew</div>
+                            <div class="command-desc">Recréer le salon identique</div>
                         </div>
                     </div>
                 </div>

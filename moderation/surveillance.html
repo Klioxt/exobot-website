@@ -84,102 +84,50 @@
                     <h2>Commandes de Surveillance</h2>
 
                     <div class="command-group">
-                        <h3>Configuration de surveillance</h3>
+                        <h3>Commandes de modération de base</h3>
                         <div class="command-item">
-                            <div class="command-code">/surveillance enable</div>
-                            <div class="command-desc">Active le système de surveillance avancée</div>
+                            <div class="command-code">/ban <utilisateur> [raison]</div>
+                            <div class="command-desc">Bannir un utilisateur du serveur</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/surveillance disable</div>
-                            <div class="command-desc">Désactive la surveillance avancée</div>
+                            <div class="command-code">/kick <utilisateur> [raison]</div>
+                            <div class="command-desc">Expulser un utilisateur du serveur</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/surveillance status</div>
-                            <div class="command-desc">Affiche l'état actuel de la surveillance</div>
+                            <div class="command-code">/mute <utilisateur></div>
+                            <div class="command-desc">Muter un utilisateur en ajoutant un rôle Muted</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/surveillance alerts <salon></div>
-                            <div class="command-desc">Définit le salon pour recevoir les alertes de sécurité</div>
-                        </div>
-                    </div>
-
-                    <div class="command-group">
-                        <h3>Détection de raids</h3>
-                        <div class="command-item">
-                            <div class="command-code">/surveillance raid enable</div>
-                            <div class="command-desc">Active la détection automatique de raids</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/surveillance raid threshold <nombre></div>
-                            <div class="command-desc">Définit le seuil de nouveaux membres pour déclencher l'alerte (défaut: 5)</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/surveillance raid action <mode></div>
-                            <div class="command-desc">Définit l'action automatique (lock/verify/manual)</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/surveillance raid lockdown</div>
-                            <div class="command-desc">Active immédiatement le mode lockdown du serveur</div>
+                            <div class="command-code">/clear <nombre></div>
+                            <div class="command-desc">Supprimer un nombre de messages (1-100)</div>
                         </div>
                     </div>
 
                     <div class="command-group">
-                        <h3>Analyse des comptes</h3>
+                        <h3>Gestion des mots interdits</h3>
                         <div class="command-item">
-                            <div class="command-code">/surveillance user check <utilisateur></div>
-                            <div class="command-desc">Analyse un utilisateur spécifique pour détecter les risques</div>
+                            <div class="command-code">/badwords <mot></div>
+                            <div class="command-desc">Ajouter un mot interdit</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/surveillance user history <utilisateur></div>
-                            <div class="command-desc">Affiche l'historique détaillé d'un utilisateur</div>
+                            <div class="command-code">/badwordslist</div>
+                            <div class="command-desc">Afficher la liste des mots interdits</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/surveillance suspicious list</div>
-                            <div class="command-desc">Liste tous les utilisateurs marqués comme suspects</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/surveillance ban_check <utilisateur></div>
-                            <div class="command-desc">Vérifie si un utilisateur est banni d'autres serveurs</div>
+                            <div class="command-code">/delbadwords</div>
+                            <div class="command-desc">Supprimer des mots interdits</div>
                         </div>
                     </div>
 
                     <div class="command-group">
-                        <h3>Rapports et logs</h3>
+                        <h3>Configuration automatique</h3>
                         <div class="command-item">
-                            <div class="command-code">/surveillance report daily</div>
-                            <div class="command-desc">Génère un rapport quotidien des activités suspectes</div>
+                            <div class="command-code">/autorole <role></div>
+                            <div class="command-desc">Définir le rôle à donner automatiquement aux nouveaux membres</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/surveillance report weekly</div>
-                            <div class="command-desc">Génère un rapport hebdomadaire détaillé</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/surveillance logs <filtre></div>
-                            <div class="command-desc">Affiche les logs filtrés (raid/user/alerts)</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/surveillance stats</div>
-                            <div class="command-desc">Affiche les statistiques de surveillance du serveur</div>
-                        </div>
-                    </div>
-
-                    <div class="command-group">
-                        <h3>Paramètres avancés</h3>
-                        <div class="command-item">
-                            <div class="command-code">/surveillance sensitivity <niveau></div>
-                            <div class="command-desc">Ajuste la sensibilité de détection (1-10, défaut: 5)</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/surveillance whitelist add <utilisateur></div>
-                            <div class="command-desc">Ajoute un utilisateur à la whitelist de surveillance</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/surveillance ignore_channel <salon></div>
-                            <div class="command-desc">Ignore un salon dans la surveillance</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/surveillance auto_action enable</div>
-                            <div class="command-desc">Active les actions automatiques sur détection</div>
+                            <div class="command-code">/renew</div>
+                            <div class="command-desc">Recréer le salon identique</div>
                         </div>
                     </div>
                 </div>

@@ -82,69 +82,53 @@
                 </div>
 
                 <div class="commands-section">
-                    <h2>Commandes Anti-Spam</h2>
+                    <h2>Commandes de Modération</h2>
 
                     <div class="command-group">
-                        <h3>Configuration de base</h3>
+                        <h3>Commandes de modération de base</h3>
                         <div class="command-item">
-                            <div class="command-code">/antispam enable</div>
-                            <div class="command-desc">Active le système anti-spam sur le serveur</div>
+                            <div class="command-code">/ban <utilisateur> [raison]</div>
+                            <div class="command-desc">Bannir un utilisateur du serveur</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/antispam disable</div>
-                            <div class="command-desc">Désactive le système anti-spam</div>
+                            <div class="command-code">/kick <utilisateur> [raison]</div>
+                            <div class="command-desc">Expulser un utilisateur du serveur</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/antispam status</div>
-                            <div class="command-desc">Affiche l'état actuel du système anti-spam</div>
+                            <div class="command-code">/mute <utilisateur></div>
+                            <div class="command-desc">Muter un utilisateur en ajoutant un rôle Muted</div>
+                        </div>
+                        <div class="command-item">
+                            <div class="command-code">/clear <nombre></div>
+                            <div class="command-desc">Supprimer un nombre de messages (1-100)</div>
                         </div>
                     </div>
 
                     <div class="command-group">
-                        <h3>Paramètres avancés</h3>
+                        <h3>Gestion des mots interdits</h3>
                         <div class="command-item">
-                            <div class="command-code">/antispam sensitivity <niveau></div>
-                            <div class="command-desc">Définit la sensibilité (1-10, 5 par défaut)</div>
+                            <div class="command-code">/badwords <mot></div>
+                            <div class="command-desc">Ajouter un mot interdit</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/antispam max_messages <nombre></div>
-                            <div class="command-desc">Nombre maximum de messages par minute (5 par défaut)</div>
+                            <div class="command-code">/badwordslist</div>
+                            <div class="command-desc">Afficher la liste des mots interdits</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/antispam timeout <secondes></div>
-                            <div class="command-desc">Durée du timeout pour les spammeurs (60s par défaut)</div>
-                        </div>
-                    </div>
-
-                    <div class="command-group">
-                        <h3>Actions automatiques</h3>
-                        <div class="command-item">
-                            <div class="command-code">/antispam action warn</div>
-                            <div class="command-desc">Avertit les utilisateurs qui spamment</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/antispam action mute</div>
-                            <div class="command-desc">Mute automatiquement les spammeurs</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/antispam action kick</div>
-                            <div class="command-desc">Expulse les spammeurs récidivistes</div>
+                            <div class="command-code">/delbadwords</div>
+                            <div class="command-desc">Supprimer des mots interdits</div>
                         </div>
                     </div>
 
                     <div class="command-group">
-                        <h3>Whitelist et exceptions</h3>
+                        <h3>Configuration automatique</h3>
                         <div class="command-item">
-                            <div class="command-code">/antispam whitelist add <utilisateur></div>
-                            <div class="command-desc">Ajoute un utilisateur à la whitelist</div>
+                            <div class="command-code">/autorole <role></div>
+                            <div class="command-desc">Définir le rôle à donner automatiquement aux nouveaux membres</div>
                         </div>
                         <div class="command-item">
-                            <div class="command-code">/antispam whitelist remove <utilisateur></div>
-                            <div class="command-desc">Retire un utilisateur de la whitelist</div>
-                        </div>
-                        <div class="command-item">
-                            <div class="command-code">/antispam ignore_channel <salon></div>
-                            <div class="command-desc">Ignore un salon spécifique</div>
+                            <div class="command-code">/renew</div>
+                            <div class="command-desc">Recréer le salon identique</div>
                         </div>
                     </div>
                 </div>
